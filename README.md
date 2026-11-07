@@ -2,13 +2,13 @@
 
 以 android-carplay 为主包，合并独立 AA-auto 引擎。首页顶部选择 Android Auto 或 CarPlay，保留两种模式各自的设置页、双虚拟屏和悬浮媒体功能。切换时会断开当前投屏并重启应用进程，**无需重启手机系统**。
 
-当前优化测试版本：**V76**。用户已确认 V75 修复了每两秒闪屏；V76 在该基线上优化包体、队列丢帧和绘制开销。具体改动、测试结果及限制见 [V76.md](V76.md)。
+当前连接修复测试版：**V77**。V76 存在协议字段裁剪造成的 AA 握手失败，请使用 V77。V77 按 V75 正常连接流程修复构建回归，保留不闪屏与性能优化。改动和检查范围见 [V77.md](V77.md)。
 
 ## 安装
 
 1. Android 13+、ARM64 手机，已 Root 并安装兼容的 LSPosed。
 2. 安装同签名 APK，打开 LSPosed 启用本模块，勾选系统框架。沿用当前合并版已经正常工作的作用域；勿同时启用旧的独立投屏模块，以免争用。
-3. 首次启用模块或系统桥检查提示版本不匹配时，重启手机一次。日常模式切换不需重启。V75 升级 V76 保持系统桥兼容。
+3. 首次启用模块或系统桥检查提示版本不匹配时，重启手机一次。日常模式切换不需重启。V75/V76 升级 V77 保持系统桥兼容。
 4. 打开应用，检查 Root、模块及桥接状态，按界面授予附近设备、通知等实际请求的权限。
 
 ## Android Auto 无线连接
@@ -16,7 +16,7 @@
 - 首页选择 Android Auto，使用支持无线 AA 的车机。
 - 在系统蓝牙中完成与车机配对，返回应用点击“授权并刷新无线车机”，选择已配对车机连接。
 - 若提示手机证书被拒绝，在手机证书区域按界面导入 APK/APKM 或两个 PEM 文件。源码中的合成测试证书不能用于连接。
-- 保留当前已正常工作的画面参数，先用同样的分辨率和帧率比较 V75/V76；降低帧率并不是本次闪屏修复方案。
+- 保留当前已正常工作的画面参数，先用同样的分辨率和帧率比较 V75/V77；降低帧率并不是本次闪屏修复方案。
 
 ## CarPlay 连接
 
@@ -37,9 +37,9 @@
 
 - [项目主页与 APK Releases](https://github.com/wangliunx3835/AA-auto)
 - [独立源码仓库（私有，需要访问权限）](https://github.com/wangliunx3835/AA-auto-source)
-- V76 使用 Release 构建；APK 与源码独立分发。某版本未列在 Releases 时，不代表该版本已经上传。
-- JDK 21、Android SDK/build-tools 37、Gradle 9.8.2；运行 `./gradlew :aap:test :aa-engine:testDebugUnitTest :aa-display:assembleRelease`。
+- V77 使用保守的 Release 精简构建；APK 与源码独立分发。某版本未列在 Releases 时，不代表该版本已经上传。
+- JDK 21、Android SDK/build-tools 37、Gradle 9.8.2；运行 `./gradlew :aap:test :aa-engine:testDebugUnitTest :aa-display:testDebugUnitTest :aa-display:assembleRelease`。
 
 基于 AADisplay / android-carplay 与 AA-auto 合并，保留各源码中的上游版权及 GPL-3.0 许可证。
 
-V76 APK 尚未上传 Releases；本次通过会话单独交付。
+V77 APK 本次在会话单独交付，尚未上传 Releases。

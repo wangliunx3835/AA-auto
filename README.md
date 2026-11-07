@@ -36,8 +36,7 @@
 ## 项目与构建
 
 - [项目主页与 APK Releases](https://github.com/wangliunx3835/AA-auto)
-- [独立源码仓库（私有，需要访问权限）](https://github.com/wangliunx3835/AA-auto-source)
-- V78 使用保守的 Release 精简构建；APK 与源码独立分发。[下载 V78 APK](https://github.com/wangliunx3835/AA-auto/releases/tag/v78) · [私有源码 Release](https://github.com/wangliunx3835/AA-auto-source/releases/tag/v78-source)。
+- 使用 Release 精简构建，安装包见 [APK Releases](https://github.com/wangliunx3835/AA-auto/releases)。
 - JDK 21、Android SDK/build-tools 37、Gradle 9.8.2；运行 `./gradlew :aap:test :aa-engine:testDebugUnitTest :aa-display:testDebugUnitTest :aa-display:assembleRelease`。
 
 基于 AADisplay / android-carplay 与 AA-auto 合并，保留各源码中的上游版权及 GPL-3.0 许可证。
